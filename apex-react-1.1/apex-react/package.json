@@ -1,4 +1,4 @@
-{
+{  "homepage":".",
    "name": "apex-react-cra2",
    "version": "0.1.0",
    "private": true,
@@ -72,4 +72,5 @@
    "devDependencies": {
       "node-sass": "^4.9.4"
    }
+
 }
