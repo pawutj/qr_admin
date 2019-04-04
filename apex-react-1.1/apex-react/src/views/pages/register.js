@@ -52,12 +52,14 @@ class Register extends Component {
                                     })
             }).then((res) => res.json())
             .then((data) =>  {console.log(data)
-                                this.setState({'c_data':data.c_data})
+                              if(data.success == false)
+                              this.setState({'c_data':data.c_data})
+                              else
+                                this.setState({'c_data':data.c_data.msg})
 
-                              }
 
 
-
+                              } 
             )
             .catch((err)=>console.log(err))
         }
