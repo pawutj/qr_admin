@@ -8,7 +8,7 @@ class QRstatComp_2 extends Component {
   render(){
     return (
       <div>
-        <h1> TEST2 </h1>
+        
         <Bar height={400} data={this.props.data}  options={BarData.options} />  
       </div>
     )

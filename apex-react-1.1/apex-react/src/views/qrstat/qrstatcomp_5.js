@@ -14,17 +14,19 @@ class QRstatComp_5 extends Component {
         <Table>
         <thead>
           <tr>
-            <th>d_seen</th>
-            <th>browser</th>
-            <th>platform</th>
+            <th>fname</th>
+            <th>lname</th>
+            <th>phone</th>
+            <th>email</th>
           </tr>
         </thead>
         <tbody>
         {data.map((d) =>
           <tr>
-            <td>{d.d_seen}</td>
-            <td>{d.browser}</td>
-            <td>{d.platform}</td>
+            <td>{d.c_fname}</td>
+            <td>{d.c_lname}</td>
+            <td>0{d.c_phone_no}</td>
+            <td>{d.c_email}</td>
           </tr>
         )
         }

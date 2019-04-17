@@ -1,7 +1,12 @@
-{  "homepage":"https://yourqr.today/yourqr_admin/",
+{
+  "homepage":"https://yourqr.today/yourqr_admin/",
    "name": "apex-react-cra2",
    "version": "0.1.0",
    "private": true,
+   "engines": {
+      "npm": "6.9.0",
+      "node": "9.5.0"
+    },
    "dependencies": {
       "@material-ui/core": "^3.9.2",
       "bootstrap": "^4.1.3",

@@ -16,7 +16,8 @@ class QRCreate extends Component {
   state = {
     url:'',
     text:'',
-    redirect: false
+    redirect: false,
+    path:''
   };
   urlChange = e =>{
     this.setState({url:e.target.value})
@@ -39,9 +40,9 @@ class QRCreate extends Component {
                                     })
             }).then((res) => res.json())
             .then((data) =>  {console.log(data)
-
+                              if(data.success == true)                
+                                this.setState({'path':data.c_data})
                                })
-            .then(() => this.setState({redirect:true   }))
 
         }
    render() {
@@ -60,7 +61,12 @@ class QRCreate extends Component {
       else
       return (
         <div>
-          <h1>test</h1>
+          <h1>{this.state.path&&this.state.path}</h1>
+          <div style ={{display:'flex' ,height:'100vh' ,marginTop:'5%' }}>
+            <div style ={{backgroundColor:'white',width:'30%',height:'55%',marginLeft:'auto',marginRight:'auto',padding:20}}>
+            <h3><b>Create your QRCode</b></h3>
+            <h5><b>Url :*</b></h5>
+          <div style = {{marginLeft:'auto',marginRight:'auto'}}>
           <Input
              type="text"
              className="form-control"
@@ -69,6 +75,10 @@ class QRCreate extends Component {
              placeholder="URL"
              required
           />
+          </div>
+          <div style ={{marginTop:20}}></div>
+            <h5><b>Text :</b></h5>
+            <div style = {{marginLeft:'auto',marginRight:'auto'}}>
           <Input
              type="text"
              className="form-control"
@@ -76,10 +86,30 @@ class QRCreate extends Component {
              onChange = {this.textChange}
              placeholder="Text"
           />
-
-          <Button type="button" color="danger" block className="btn-pink btn-raised" onClick = {this.postData} >
+            </div>
+            <div style ={{marginTop:20}}></div>
+          <Button type="button" color="warning" block  onClick = {this.postData} >
              Submit
           </Button>
+            </div>
+            <div style ={{backgroundColor:'white',width:'30%',height:'55%',marginLeft:'auto',marginRight:'auto',padding:20}}>
+            {this.state.path && <img src={"https://yourqr.today/api/v1/qr.show/"+this.state.path} width="250" style = {{marginLeft:'auto',marginRight:'auto' ,display: 'block'}} />}
+            {this.state.path &&
+            <div style={{display:'flex' , flexDirection:'row' ,padding:10  }}>
+            <div style = {{marginLeft:'auto',marginRight:'auto'}}>
+            <Button type="button" color="warning" >   
+             Download 
+            </Button>
+            </div>
+            <div style = {{marginLeft:'auto',marginRight:'auto'}}>
+            <Button type="button" color="warning"    >
+            Download 
+            </Button>
+            </div>
+             </div>
+            }
+            </div>
+          </div>
         </div>
 
       );

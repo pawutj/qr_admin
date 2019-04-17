@@ -11,14 +11,59 @@ import {
    Label,
    Card,
    CardBody,
-   CardFooter
+   CardFooter,
+   Modal,
+   ModalHeader, 
+   ModalBody, 
+   ModalFooter 
 } from "reactstrap";
 
+
 class Register extends Component {
+   
+   constructor(props) {
+      super(props);
+      this.state = {
+        modal: false
+      };
+  
+      this.toggle = this.toggle.bind(this);
+    }
+
+    toggle() {
+      this.setState(prevState => ({
+        modal: !prevState.modal
+      }));
+     
+    }
+
+    toggle_2() {
+      this.setState(prevState => ({
+        modal: !prevState.modal
+      }));
+      fetch('https://yourqr.today/api/v1/user.nonce', {
+                method: 'POST',
+                headers : new Headers(),
+                body:JSON.stringify({c_email:this.state.email
+                                    ,c_passwd:this.state.passwd
+                                    })
+            }).then((res) => res.json())
+            .then((data) =>  {console.log(data)
+                              if(data.success == false)
+                              this.setState({'c_data':data.c_data})
+                              else
+                                this.setState({'modal' : true})
+
+
+
+                              } 
+            )
+            .catch((err)=>console.log(err))
+    }
+
    state = {
       isChecked: true,
       email: '',
-      username :'',
       passwd:'',
       redirect:false,
       c_data:''
@@ -32,10 +77,6 @@ class Register extends Component {
      this.setState({email:e.target.value})
    }
 
-   usernameChange = e =>{
-     this.setState({username:e.target.value})
-   }
-
    passwdChange = e =>{
      this.setState({passwd:e.target.value})
    }
@@ -46,16 +87,14 @@ class Register extends Component {
                 method: 'POST',
                 headers : new Headers(),
                 body:JSON.stringify({c_email:this.state.email
-                                    ,c_username:this.state.username
                                     ,c_passwd:this.state.passwd
-                                    ,c_fname:'pawut'
                                     })
             }).then((res) => res.json())
             .then((data) =>  {console.log(data)
                               if(data.success == false)
                               this.setState({'c_data':data.c_data})
                               else
-                                this.setState({'c_data':data.c_data.msg})
+                                this.setState({'modal' : true})
 
 
 
@@ -66,17 +105,28 @@ class Register extends Component {
 
 
    render() {
-     if(this.state.redirect)
-      return (<Redirect to ={{pathname:'/pages/login'}}/>
-              )
-      else
       return (
          <div className="container">
             <Row className="full-height-vh">
                <Col xs="12" className="d-flex align-items-center justify-content-center">
                   <Card className="gradient-indigo-purple text-center width-400">
                      <CardBody>
-                        <h2 className="white py-4">Register</h2>
+                        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                           <ModalHeader toggle={this.toggle}>Confirm Your Email</ModalHeader>
+                           <ModalBody>
+                           <div style={{marginLeft:'auto',marginRight:'auto',textAlign:'center'}}>
+                           <p>We have send you an email to <b>{this.state.email}</b> to activate your account. Please check you inbox and use the activation link</p>
+
+                           <p>เราได้ส่งอีเมล์ไปที่ {this.state.email} เพื่อเปิดใช้งานบัญชีของคุณ กรุณาตรวจสอบกล่องจดหมายของคุณ และใช้ลิงค์เปิดใช้งาน</p>
+                           
+                           </div>
+                           </ModalBody>
+                           <ModalFooter>
+                              <Button color="secondary" onClick={()=>this.toggle_2()}>Resend Activation Link</Button>
+                           </ModalFooter>
+                        </Modal>
+                        <h5 className="white ">Start Your Free Trial</h5>
+                        <h2 className="white py-3"  >Register</h2>
                         <h3>{this.state.c_data}</h3>
                         <Form className="pt-2">
                            <FormGroup>
@@ -87,18 +137,6 @@ class Register extends Component {
                                     placeholder="Email"
                                     value ={this.state.email}
                                     onChange = {this.emailChange}
-                                    required
-                                 />
-                              </Col>
-                           </FormGroup>
-                           <FormGroup>
-                              <Col md="12">
-                                 <Input
-                                    type='text'
-                                    className="form-control"
-                                    placeholder="Username"
-                                    value ={this.state.username}
-                                    onChange = {this.usernameChange}
                                     required
                                  />
                               </Col>
@@ -146,16 +184,14 @@ class Register extends Component {
                               </Col>
                            </FormGroup>
                         </Form>
+
+                        <h5 className="blue ">Free 30-Day trial</h5>
                      </CardBody>
                      <CardFooter>
-                        <div className="float-left">
-                           <NavLink to="/pages/forgot-password" className="text-white">
-                              Forgot Password?
-                           </NavLink>
-                        </div>
-                        <div className="float-right">
-                           <NavLink to="/pages/login" className="text-white">
-                              Login
+                        <div className ="text-white">
+                        Already have an account?
+                           <NavLink to="/pages/login" className ="text-white">
+                                {" "}Login Here
                            </NavLink>
                         </div>
                      </CardFooter>

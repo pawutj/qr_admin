@@ -1,6 +1,6 @@
 // import external modules
 import React, { Component, Suspense, lazy } from "react";
-import { BrowserRouter, Switch } from "react-router-dom";
+import { BrowserRouter, Switch,HashRouter } from "react-router-dom";
 import Spinner from "../components/spinner/spinner";
 
 // import internal(own) modules
@@ -95,7 +95,7 @@ class Router extends Component {
    render() {
       return (
          // Set the directory path if you are deplying in sub-folder
-         <BrowserRouter basename="/">
+         <HashRouter basename="/">
             <Switch>
                {/* Dashboard Views */}
               <MainLayoutRoutes
@@ -103,7 +103,7 @@ class Router extends Component {
                   path="/"
                   render={matchprops => (
                      <Suspense fallback={<Spinner />}>
-                        <LazyEcommerceDashboard {...matchprops} />
+                        <LazyAnalyticsDashboard {...matchprops} />
                      </Suspense>
                   )}
                />
@@ -824,7 +824,7 @@ class Router extends Component {
                   )}
                />
             </Switch>
-         </BrowserRouter>
+         </HashRouter>
       );
    }
 }
