@@ -83,7 +83,7 @@ this.setState({c_2:data.c_data[0].c_2})
 this.setState({c_4:data.c_data[0].c_4})
 this.setState({c_4_1:data.c_data[0].c_4_1})
 this.setState({c_4_2:data.c_data[0].c_4_2})
-const c_4_3 = data.c_data[0].c_4_1/data.c_data[0].c_4_2*100
+const c_4_3 = (data.c_data[0].c_4_1/data.c_data[0].c_4_2*100).toFixed(0)
 this.setState({c_4_3:c_4_3})
 this.setState({c_5:data.c_data[0].c_5})
 }
@@ -137,7 +137,7 @@ this.setState({c_5:data.c_data[0].c_5})
         if(sum>0){
           let k = this.trim(data_key[index])
           this.setState({c_3:k})
-          let t = max/sum*100
+          let t = (max/sum*100).toFixed(0)
           this.setState({c_3_1:t})
         } 
       })
@@ -562,7 +562,7 @@ this.setState({c_5:data.c_data[0].c_5})
                         this.toggle_2("1");
                      }}
                   >
-                     browser
+                     <b>Browser</b>
                   </NavLink>
                </NavItem>
                <NavItem>
@@ -574,7 +574,7 @@ this.setState({c_5:data.c_data[0].c_5})
                         this.toggle_2("2");
                      }}
                   >
-                     platform
+                     <b>Platform</b>
                   </NavLink>
                </NavItem>
                <NavItem>
@@ -586,7 +586,7 @@ this.setState({c_5:data.c_data[0].c_5})
                         this.toggle_2("3");
                      }}
                   >
-                    device
+                    <b>Device</b>
                   </NavLink>
                </NavItem>
             </Nav>

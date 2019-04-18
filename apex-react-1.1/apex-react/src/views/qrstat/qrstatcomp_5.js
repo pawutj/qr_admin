@@ -14,10 +14,10 @@ class QRstatComp_5 extends Component {
         <Table>
         <thead>
           <tr>
-            <th>fname</th>
-            <th>lname</th>
-            <th>phone</th>
-            <th>email</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Phone</th>
+            <th>Email</th>
           </tr>
         </thead>
         <tbody>
