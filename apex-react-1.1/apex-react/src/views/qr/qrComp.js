@@ -1,7 +1,7 @@
 import React,{Component} from "react"
 import { Button } from "reactstrap";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
+import * as Icon from "react-feather";
 
 class QRComp extends Component{
 
@@ -18,7 +18,7 @@ class QRComp extends Component{
           <p>Name : {this.props.data&&this.props.data.c_code} </p>
           <p>URL : {this.props.data&&this.props.data.c_data}</p>
           <p>Created  : {this.props.data&&this.props.data.d_create}</p>
-          <p>0 Scan</p>
+         
         </div>
 
         <div style = {box_right}>
@@ -30,9 +30,13 @@ class QRComp extends Component{
           <div style ={{margin:'auto'}}>
           <Link to ={{pathname:'/qrstat',state:{qr_id:this.props.data.qr_id} }}>
           <Button outline color="warning" block>
-
+          <div style ={{display:'flex'}}>
+          <Icon.BarChart2 size={20} strokeWidth="1.3"  />
+          
+          <div style= {{marginLeft:20}}>
               Statisics
-
+          </div>
+          </div>
           </Button>
           </Link>
           </div>
@@ -40,16 +44,31 @@ class QRComp extends Component{
           <div style ={{margin:'auto'}}>
           <a href={"https://yourqr.today/api/v1/qr.show/"+this.props.data.c_code} download  >
           <Button outline color="warning" block >
-          <div style ={{color:'black'}}>
+          
+          <div style ={{color:'black',display:'flex'}}>
+          <Icon.Download size={20} strokeWidth="1.3" color="#000" />
+          
+          <div style= {{marginLeft:20}}>
             Download
+          </div>
             </div>
           </Button>
           </a>
           </div>
           <div style ={{margin:'auto'}}>
+          <Link to ={{pathname:'/qrstat',state:{qr_id:this.props.data.qr_id,t:true} }}>
           <Button outline color="warning" block >
+          <div style ={{display:'flex'}}>
+          <Icon.Users size={20} strokeWidth="1.3"  />
+          
+          <div style= {{marginLeft:20}}>
+          
             Who Scans !
+          
+          </div>
+          </div>
           </Button>
+          </Link>
         </div>
         
         </div>

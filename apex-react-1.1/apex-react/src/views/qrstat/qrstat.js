@@ -65,6 +65,8 @@ class QRStatis extends Component{
   componentDidMount(){
     this.summary_1()
     this.summary_2()
+    if(this.props.location.state.t == true)
+      this.click_5()
   }
 
   summary_1(){
@@ -81,7 +83,7 @@ this.setState({c_2:data.c_data[0].c_2})
 this.setState({c_4:data.c_data[0].c_4})
 this.setState({c_4_1:data.c_data[0].c_4_1})
 this.setState({c_4_2:data.c_data[0].c_4_2})
-const c_4_3 = data.c_data[0].c_4_1/data.c_data[0].c_4_2
+const c_4_3 = data.c_data[0].c_4_1/data.c_data[0].c_4_2*100
 this.setState({c_4_3:c_4_3})
 this.setState({c_5:data.c_data[0].c_5})
 }
@@ -91,7 +93,7 @@ this.setState({c_5:data.c_data[0].c_5})
 
 
   trim(s){
-    return s.length>16?`${s.substring(0,16)}...`:s
+    return s.length>12?`${s.substring(0,12)}...`:s
   }
 
   summary_2(){
@@ -135,7 +137,7 @@ this.setState({c_5:data.c_data[0].c_5})
         if(sum>0){
           let k = this.trim(data_key[index])
           this.setState({c_3:k})
-          let t = max/sum
+          let t = max/sum*100
           this.setState({c_3_1:t})
         } 
       })
@@ -462,6 +464,7 @@ this.setState({c_5:data.c_data[0].c_5})
     return(
       <div>
       <h1>Scan Statistics * สถิติการสแกน</h1>
+     
       <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
            <DropdownToggle caret>{this.state.bottomValue}</DropdownToggle>
            <DropdownMenu>
@@ -481,7 +484,7 @@ this.setState({c_5:data.c_data[0].c_5})
                text="Total Scan"
                iconSide="right"
             >
-               
+             <Icon.BarChart size={56} strokeWidth="1.3" color="#fff" />  
             </MinimalStatisticsBG>
           </div>
 
@@ -495,7 +498,7 @@ this.setState({c_5:data.c_data[0].c_5})
                text="Unique Users"
                iconSide="right"
             >
-               
+               <Icon.UserX size={56} strokeWidth="1.3" color="#fff" />  
             </MinimalStatisticsBG>
             </div>
 
@@ -504,11 +507,11 @@ this.setState({c_5:data.c_data[0].c_5})
             >
               <MinimalStatisticsBG
                  cardBgColor="gradient-blackberry"
-                 statistics={this.state.c_3_1}
+                 statistics={this.state.c_3_1+' %'}
                  text={this.state.c_3}
                  iconSide="right"
               >
-                 
+                 <Icon.MapPin size={56} strokeWidth="1.3" color="#fff" />  
               </MinimalStatisticsBG>
               </div>
 
@@ -517,11 +520,11 @@ this.setState({c_5:data.c_data[0].c_5})
               >
                 <MinimalStatisticsBG
                    cardBgColor="gradient-blackberry"
-                   statistics={this.state.c_4_3}
+                   statistics={this.state.c_4_3+ ' %'}
                    text={this.state.c_4}
                    iconSide="right"
                 >
-                   
+                   <Icon.Smartphone size={56} strokeWidth="1.3" color="#fff" />  
                 </MinimalStatisticsBG>
                 </div>
 
@@ -534,7 +537,7 @@ this.setState({c_5:data.c_data[0].c_5})
                      text="Who Scan"
                      iconSide="right"
                   >
-                     
+                     <Icon.Users size={56} strokeWidth="1.3" color="#fff" />  
                   </MinimalStatisticsBG>
                   </div>
 

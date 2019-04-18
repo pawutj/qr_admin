@@ -40,7 +40,7 @@ class QRDashboard extends Component {
          <Fragment>
            <div style ={{margin:30}}>
           <h1>QRCode Dashboard</h1>
-
+          <p>รายงานแสดงผลสถิติการสแกน QR Code ที่สร้างทั้งหมด</p>
           <Link to = '/qrcreate'>
           <Button color="warning">Create QR Code</Button>
           </Link>

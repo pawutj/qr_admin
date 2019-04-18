@@ -5,7 +5,9 @@ import templateConfig from "../../../templateConfig";
 
 const Footer = props => (
    <footer>
-      <p>YOURQR</p>
+      <div style = {{textAlign:'center',marginTop:30}}>
+      <p>Copyright © 2019 YourQR</p>
+      </div>
    </footer>
 );
 
