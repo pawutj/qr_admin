@@ -1,12 +1,33 @@
 // import external modules
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import { Row, Col, Input, Form, FormGroup, Button, Card, CardBody, CardFooter } from "reactstrap";
+import { Row, Col, Input, Form, FormGroup, Button, Card, CardBody, CardFooter,Modal,
+   ModalHeader, 
+   ModalBody, 
+   ModalFooter  } from "reactstrap";
 
 class ForgotPassword extends Component {
   state = {
-    email:''
+    email:'',
+    
   }
+
+  constructor(props) {
+   super(props);
+   this.state = {
+     modal: false,
+     c_data:''
+   };
+
+   this.toggle = this.toggle.bind(this);
+ }
+
+ toggle() {
+   this.setState(prevState => ({
+     modal: !prevState.modal
+   }));
+  
+ }
 
   emailChange = e =>{
     this.setState({email:e.target.value})
@@ -20,7 +41,12 @@ class ForgotPassword extends Component {
                 body:JSON.stringify({c_email:this.state.email
                                     })
             }).then((res) => res.json())
-            .then((data) => console.log(data)
+            .then((data) =>{
+               console.log(data)
+               if(data.success == false)
+               this.setState({'c_data':data.c_data})
+               else
+                 this.setState({'modal' : true})}
           )
 
 }
@@ -33,9 +59,25 @@ class ForgotPassword extends Component {
             <Col xs="12" className="d-flex align-items-center justify-content-center">
                <Card className="gradient-indigo-purple text-center width-400">
                   <CardBody>
+                  <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                           <ModalHeader toggle={this.toggle}>Recover Password</ModalHeader>
+                           <ModalBody>
+                           <div style={{marginLeft:'auto',marginRight:'auto',textAlign:'center'}}>
+                           <p>We have send you an email. Please use the included link to reset your password.</p>
+
+                       
+                           
+                           </div>
+                           </ModalBody>
+                           
+                        </Modal>
                      <div className="text-center">
-                        <h4 className="text-uppercase text-bold-400 white py-4">Forgot Password</h4>
+                        <h4 className="text-uppercase text-bold-200 white py-4">Forgot Password</h4>
+                        <div style ={{color:'white'}}>
+                        <h5>Revover Password</h5>
+                        </div>
                      </div>
+                     <h3>{this.state.c_data}</h3>
                      <Form className="pt-2">
                         <FormGroup>
                            <Col md="12">

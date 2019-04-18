@@ -195,7 +195,7 @@ this.setState({c_5:data.c_data[0].c_5})
         const data_temp = {
           labels:a,
           datasets:[{
-            label: "Series A",
+            label: "Total Scan",
             data: b ,
             backgroundColor: "rgba(255, 141, 96, 0.8)",
             borderColor: "rgba(148,159,177,1)",
@@ -248,7 +248,7 @@ this.setState({c_5:data.c_data[0].c_5})
         const data_temp = {
           labels:a,
           datasets:[{
-            label: "Series A",
+            label: "Unique Users",
             data: b ,
             backgroundColor: "rgba(255, 141, 96, 0.8)",
             borderColor: "rgba(148,159,177,1)",

@@ -61,7 +61,8 @@ class QRCreate extends Component {
       else
       return (
         <div>
-          <h1>{this.state.path&&this.state.path}</h1>
+          <h1>QRCode</h1>
+          <h5>สร้างQRCode ของคุณสำหรับการติดตามวัดผล</h5>
           <div style ={{display:'flex' ,height:'100vh' ,marginTop:'5%' }}>
             <div style ={{backgroundColor:'white',width:'30%',height:'55%',marginLeft:'auto',marginRight:'auto',padding:20}}>
             <h3><b>Create your QRCode</b></h3>
@@ -95,17 +96,15 @@ class QRCreate extends Component {
             <div style ={{backgroundColor:'white',width:'30%',height:'55%',marginLeft:'auto',marginRight:'auto',padding:20}}>
             {this.state.path && <img src={"https://yourqr.today/api/v1/qr.show/"+this.state.path} width="250" style = {{marginLeft:'auto',marginRight:'auto' ,display: 'block'}} />}
             {this.state.path &&
-            <div style={{display:'flex' , flexDirection:'row' ,padding:10  }}>
+            <div >
             <div style = {{marginLeft:'auto',marginRight:'auto'}}>
-            <Button type="button" color="warning" >   
+            <a href={"https://yourqr.today/api/v1/qr.show/"+this.state.path} download  >
+            <Button type="button" color="warning" block >   
              Download 
             </Button>
+            </a>
             </div>
-            <div style = {{marginLeft:'auto',marginRight:'auto'}}>
-            <Button type="button" color="warning"    >
-            Download 
-            </Button>
-            </div>
+            
              </div>
             }
             </div>

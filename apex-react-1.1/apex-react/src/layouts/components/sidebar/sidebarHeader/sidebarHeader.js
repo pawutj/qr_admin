@@ -20,20 +20,9 @@ class SidebarHeader extends Component {
                <div className="sidebar-header">
                   <div className="logo clearfix">
                      <NavLink to="/" className="logo-text float-left">
-                        <div className="logo-img">
-                           {templateConfig.sidebar.backgroundColor === "white" ? (
-                              this.props.sidebarBgColor === "" || this.props.sidebarBgColor === "white" ? (
-                                 <img src={LogoDark} alt="logo" />
-                              ) : (
-                                 <img src={Logo} alt="logo" />
-                              )
-                           ) : this.props.sidebarBgColor === "white" ? (
-                              <img src={LogoDark} alt="logo" />
-                           ) : (
-                              <img src={Logo} alt="logo" />
-                           )}                           
-                        </div>
+     
                         <span className="text align-middle">YOURQR</span>
+                     
                      </NavLink>
 
                      <span className="nav-toggle d-none d-sm-none d-md-none d-lg-block">
