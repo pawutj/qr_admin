@@ -19,7 +19,10 @@ import {
    Book,
    CheckSquare,
    LifeBuoy,
-   Users
+   Users,
+   LogOut,
+   BarChart,
+   Cpu
 } from "react-feather";
 import { NavLink } from "react-router-dom";
 
@@ -36,7 +39,7 @@ class SideMenuContent extends Component {
             <SideMenu.MenuSingleItem badgeColor="danger" >
                <NavLink to="/qr" activeclassname="active">
                   <i className="menu-icon">
-                     <Mail size={18} />
+                     <BarChart size={18} />
                   </i>
                   <span className="menu-item-text">Dashboard </span>
                </NavLink>
@@ -45,7 +48,7 @@ class SideMenuContent extends Component {
             <SideMenu.MenuSingleItem badgeColor="danger">
                <NavLink to="/qrcreate" activeclassname="active">
                   <i className="menu-icon">
-                     <Mail size={18} />
+                     <Cpu size={18} />
                   </i>
                   <span className="menu-item-text">Create qr </span>
                </NavLink>
@@ -57,7 +60,7 @@ class SideMenuContent extends Component {
                                                                 } 
                                                 } activeclassname="active">
                   <i className="menu-icon">
-                     <Mail size={18} />
+                     <LogOut size={18} />
                   </i>
                   <span className="menu-item-text">Logout </span>
                </NavLink>

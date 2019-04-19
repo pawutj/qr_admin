@@ -46,13 +46,14 @@ class QRDashboard extends Component {
           </Link>
           </div>
 
-
+        <div style  = {{marginLeft:20}}>
         {this.state.qr_list.map(q =>
           <div style ={containner}>
             <QRComp data = {q} />
           </div>
         )
         }
+        </div>
 
          </Fragment>
       );

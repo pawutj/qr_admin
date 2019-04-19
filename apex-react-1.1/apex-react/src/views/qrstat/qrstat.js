@@ -463,8 +463,9 @@ this.setState({c_5:data.c_data[0].c_5})
      else
     return(
       <div>
+      <div style = {{marginTop:50}}> 
       <h1>Scan Statistics * สถิติการสแกน</h1>
-     
+      </div>
       <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
            <DropdownToggle caret>{this.state.bottomValue}</DropdownToggle>
            <DropdownMenu>

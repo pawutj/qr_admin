@@ -61,12 +61,16 @@ class QRCreate extends Component {
       else
       return (
         <div>
+          <div style = {{marginTop:70}}> 
           <h1>QRCode</h1>
-          <h5>สร้างQRCode ของคุณสำหรับการติดตามวัดผล</h5>
+          <p>สร้างQRCode ของคุณสำหรับการติดตามวัดผล</p>
+          </div>
           <div style ={{display:'flex' ,height:'100vh' ,marginTop:'5%' }}>
             <div style ={{backgroundColor:'white',width:'30%',height:'55%',marginLeft:'auto',marginRight:'auto',padding:20}}>
-            <h3><b>Create your QRCode</b></h3>
+            <h5><b>Set the link to your website.</b></h5>
+            <div style = {{marginTop:40}}>
             <h5><b>Url :*</b></h5>
+            </div>
           <div style = {{marginLeft:'auto',marginRight:'auto'}}>
           <Input
              type="text"
