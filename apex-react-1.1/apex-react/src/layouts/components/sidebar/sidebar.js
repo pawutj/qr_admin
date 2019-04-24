@@ -54,6 +54,7 @@ class Sidebar extends Component {
    render() {
       return (
         <Fragment>
+         
          <FoldedContentConsumer>
             {context => (
                <div
@@ -102,6 +103,7 @@ class Sidebar extends Component {
                </div>
             )}
          </FoldedContentConsumer>
+         <div hidden = {true}>
          <Customizer 
             sidebarBgColor={this.props.sidebarBgColor} 
             sidebarImageUrl={this.props.sidebarImageUrl}
@@ -110,6 +112,7 @@ class Sidebar extends Component {
             handleLayout={this.props.handleLayout}
             handleCollapsedSidebar={this.handleCollapsedSidebar.bind(this)}
          />
+         </div>
         </Fragment>
     );
    }

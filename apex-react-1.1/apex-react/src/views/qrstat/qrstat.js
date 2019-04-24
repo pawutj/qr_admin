@@ -53,11 +53,11 @@ class QRStatis extends Component{
       c_1:0,
       c_2:0,
       c_5:0,
-      c_4:'0 scan',
+      c_4:'0 Devices',
       c_4_1:0,
       c_4_2:1,
       c_4_3:0,
-      c_3:'0 scan',
+      c_3:'0 Location',
       c_3_1:'0'
     };
   }
@@ -463,9 +463,11 @@ this.setState({c_5:data.c_data[0].c_5})
      else
     return(
       <div>
-      <div style = {{marginTop:50}}> 
-      <h1>Scan Statistics * สถิติการสแกน</h1>
+      <div style = {{marginTop:70,marginLeft:20}}> 
+      <h1>Scan Statistics</h1>
+      <p>สถิติการสแกน</p>
       </div>
+      <div style = {{marginLeft:20}}> 
       <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
            <DropdownToggle caret>{this.state.bottomValue}</DropdownToggle>
            <DropdownMenu>
@@ -474,7 +476,8 @@ this.setState({c_5:data.c_data[0].c_5})
               <DropdownItem onClick = {() => this.setValueBottom_1('30 Day')} >30 Day</DropdownItem>
            </DropdownMenu>
         </Dropdown>
-
+        </div>
+        <div style ={{marginLeft:20}}>
       <div style = {containner} >
           <div style ={{display:'flex',width:"18%",flexDirection:'column' , marginLeft:'auto',marginRight:'auto'}}
             onClick = {this.click_1}
@@ -488,7 +491,7 @@ this.setState({c_5:data.c_data[0].c_5})
              <Icon.BarChart size={56} strokeWidth="1.3" color="#fff" />  
             </MinimalStatisticsBG>
           </div>
-
+          
 
           <div style ={{display:'flex',width:"18%",flexDirection:'column' , marginLeft:'auto',marginRight:'auto'}}
           onClick = {this.click_2}
@@ -535,7 +538,7 @@ this.setState({c_5:data.c_data[0].c_5})
                   <MinimalStatisticsBG
                      cardBgColor="gradient-blackberry"
                      statistics={this.state.c_5}
-                     text="Who Scan"
+                     text="Identified Users"
                      iconSide="right"
                   >
                      <Icon.Users size={56} strokeWidth="1.3" color="#fff" />  
@@ -544,7 +547,7 @@ this.setState({c_5:data.c_data[0].c_5})
 
 
       </div>
-
+      </div>
       <div>
 
         {this.state.g1 && <QRStatComp_1 data = {this.state.data_1}/>}

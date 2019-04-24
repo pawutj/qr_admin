@@ -50,7 +50,7 @@ class SideMenuContent extends Component {
                   <i className="menu-icon">
                      <Cpu size={18} />
                   </i>
-                  <span className="menu-item-text">Create qr </span>
+                  <span className="menu-item-text">Create QR Code</span>
                </NavLink>
             </SideMenu.MenuSingleItem>
 

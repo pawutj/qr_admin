@@ -4,17 +4,19 @@ import QRComp from "./qrComp.js"
 
 import {  Button } from "reactstrap";
 import { Link ,Redirect} from "react-router-dom";
-
+import { Popover, PopoverHeader, PopoverBody } from "reactstrap";
 class QRDashboard extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      qr_list :[]
+      qr_list :[],
+      popoverOpen: false
     }
   }
 
   componentDidMount(){
+    
     if(!(localStorage.getItem('user_id')=='null' || localStorage.getItem("user_id") == 'undefined')){
       console.log(localStorage.getItem('user_id'))
 
@@ -24,6 +26,8 @@ class QRDashboard extends Component {
           .then(data => {
                      this.setState({qr_list:data.c_data})
                      console.log(this.state.qr_list)
+                     if(data.c_data.length == 0)
+                     this.setState({popoverOpen:false})
                    }
                   )
                 }
@@ -38,14 +42,32 @@ class QRDashboard extends Component {
       else
       return (
          <Fragment>
-           <div style ={{margin:30}}>
-          <h1>QRCode Dashboard</h1>
+           <div style ={{marginTop:70,marginLeft:20}}>
+          <h1>QR Code Dashboard</h1>
           <p>รายงานแสดงผลสถิติการสแกน QR Code ที่สร้างทั้งหมด</p>
+          
+          </div>
+
+
+          <div style = {{marginLeft:25}}>
           <Link to = '/qrcreate'>
-          <Button color="warning">Create QR Code</Button>
+          <Button color="warning" id = "Popover1">Create QR Code</Button>
           </Link>
           </div>
 
+          <Popover
+              
+               isOpen={this.state.popoverOpen}
+               target="Popover1"
+               placement='right-start'
+               
+            >
+              
+               <PopoverBody>
+                  กดตรงนี้เพื่อสร้าง QR Code แรกของคุณ
+               </PopoverBody>
+            </Popover>
+           
         <div style  = {{marginLeft:20}}>
         {this.state.qr_list.map(q =>
           <div style ={containner}>

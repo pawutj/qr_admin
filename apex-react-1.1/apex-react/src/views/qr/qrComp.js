@@ -15,9 +15,8 @@ class QRComp extends Component{
         </div>
 
         <div style = {box_center}>
-          <p>Name : {this.props.data&&this.props.data.c_code} </p>
-          <p>URL : {this.props.data&&this.props.data.c_data}</p>
-          <p>Created  : {this.props.data&&this.props.data.d_create}</p>
+          <p><b><font color="#F29258">URL: {this.props.data&&this.props.data.c_data}</font></b></p>
+          <p>Created: {this.props.data&&this.props.data.d_create}</p>
          
         </div>
 
@@ -33,7 +32,7 @@ class QRComp extends Component{
           <div style ={{display:'flex'}}>
           <Icon.BarChart2 size={20} strokeWidth="1.3"  />
           
-          <div style= {{marginLeft:20}}>
+          <div style= {{marginLeft:10}}>
               Statisics
           </div>
           </div>
@@ -48,7 +47,7 @@ class QRComp extends Component{
           <div style ={{color:'black',display:'flex'}}>
           <Icon.Download size={20} strokeWidth="1.3" color="#000" />
           
-          <div style= {{marginLeft:20}}>
+          <div style= {{marginLeft:10}}>
             Download
           </div>
             </div>
@@ -61,9 +60,9 @@ class QRComp extends Component{
           <div style ={{display:'flex'}}>
           <Icon.Users size={20} strokeWidth="1.3"  />
           
-          <div style= {{marginLeft:20}}>
+          <div style= {{marginLeft:10}}>
           
-            Who Scans !
+          Identified Users
           
           </div>
           </div>

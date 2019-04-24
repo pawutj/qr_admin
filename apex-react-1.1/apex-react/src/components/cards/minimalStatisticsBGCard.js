@@ -22,8 +22,13 @@ class MinimalStatisticsBG extends PureComponent {
                <Media>
                   {iconLeft}
                   <Media body className={classnames("white", textDirection)}>
-                     <h3 className={classnames("mb-1", this.props.statisticsColor)}>{this.props.statistics}</h3>
+                     
+                     <h4 className={classnames("mb-1", this.props.statisticsColor)}>{this.props.statistics}</h4>
+                     <div style = {{lineHeight:0.7}}>
+                     
                      <span>{this.props.text}</span>
+                     </div>
+                     
                   </Media>
                   {iconRight}
                </Media>

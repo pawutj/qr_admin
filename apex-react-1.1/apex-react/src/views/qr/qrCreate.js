@@ -17,7 +17,8 @@ class QRCreate extends Component {
     url:'',
     text:'',
     redirect: false,
-    path:''
+    path:'',
+    texterror:''
   };
   urlChange = e =>{
     this.setState({url:e.target.value})
@@ -29,6 +30,7 @@ class QRCreate extends Component {
   }
 
   postData =() => {
+            if((`${this.state.text.length}`)<20){
             console.log("AA")
             fetch('https://yourqr.today/api/v1/qr.save', {
                 method: 'POST',
@@ -43,6 +45,10 @@ class QRCreate extends Component {
                               if(data.success == true)                
                                 this.setState({'path':data.c_data})
                                })
+                              }
+            else{
+              this.setState({texterror:'ข้อความต้องสั้นกว่า 20 ตัวอักษร'})
+            }
 
         }
    render() {
@@ -61,15 +67,20 @@ class QRCreate extends Component {
       else
       return (
         <div>
-          <div style = {{marginTop:70}}> 
-          <h1>QRCode</h1>
-          <p>สร้างQRCode ของคุณสำหรับการติดตามวัดผล</p>
+          <div style = {{marginTop:70,marginLeft:20}}> 
+          <h1>QR Code</h1>
+          <p>สามารถ สร้าง โปรโมทWebsite,เชื่อมระบบแอดเพื่อน Line ,แชร์ Videos,เอกสารDownload,รับไลค์บนFacebook พร้อมติดตามวัดผล</p>
+         
+
+          <h5><b><font color="#F29258">เริ่มสร้าง QR Code ของคุณ</font></b></h5>
+         
           </div>
-          <div style ={{display:'flex' ,height:'100vh' ,marginTop:'5%' }}>
-            <div style ={{backgroundColor:'white',width:'30%',height:'55%',marginLeft:'auto',marginRight:'auto',padding:20}}>
-            <h5><b>Set the link to your website.</b></h5>
+          <div style ={{display:'flex' ,height:'50vh' ,marginTop:30 }}>
+            <div style ={{backgroundColor:'white',width:'30%',height:'100%',marginLeft:'auto',marginRight:'auto',padding:20}}>
+            <h5><b>ตั้งค่าลิงค์ไปยังเว็ปไซต์ของคุณ</b></h5>
             <div style = {{marginTop:40}}>
-            <h5><b>Url :*</b></h5>
+            <p>{this.state.texterror}</p>
+            <h5><b>URL: <font color="#F29258">*</font></b></h5>
             </div>
           <div style = {{marginLeft:'auto',marginRight:'auto'}}>
           <Input
@@ -82,7 +93,7 @@ class QRCreate extends Component {
           />
           </div>
           <div style ={{marginTop:20}}></div>
-            <h5><b>Text :</b></h5>
+            <h5><b>Text:</b></h5>
             <div style = {{marginLeft:'auto',marginRight:'auto'}}>
           <Input
              type="text"
@@ -97,7 +108,7 @@ class QRCreate extends Component {
              Submit
           </Button>
             </div>
-            <div style ={{backgroundColor:'white',width:'30%',height:'55%',marginLeft:'auto',marginRight:'auto',padding:20}}>
+            <div style ={{backgroundColor:'white',width:'30%',height:'100%',marginLeft:'auto',marginRight:'auto',padding:20}}>
             {this.state.path && <img src={"https://yourqr.today/api/v1/qr.show/"+this.state.path} width="250" style = {{marginLeft:'auto',marginRight:'auto' ,display: 'block'}} />}
             {this.state.path &&
             <div >
@@ -112,6 +123,12 @@ class QRCreate extends Component {
              </div>
             }
             </div>
+            
+          </div>
+            <div style = {{marginTop:30,marginLeft:20}}>
+          <p><font color="#F29258">ข้อกำหนดในการใส่ข้อความ * Text บน QR Code</font></p>
+          <p>กรณีพิมพ์ข้อความเป็นภาษาอังกฤษ จะพิมพ์ได้ 20 ตัวอักษร คิดเป็น 1 ข้อความ</p>
+          <p>กรณีพิมพ์ข้อความเป็นภาษาไทยหรือไทยปนอังกฤษ จะพิมพ์ได้ 20 ตัวอักษร คิดเป็น 1 ข้อความ</p>
           </div>
         </div>
 

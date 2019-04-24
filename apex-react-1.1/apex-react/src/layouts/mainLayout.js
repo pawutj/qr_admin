@@ -65,14 +65,14 @@ class MainLayout extends PureComponent {
                            [`${this.state.layout}`]: (this.state.layout !== '')
                         })}
                      >
-
+                     
                         <Sidebar
                            toggleSidebarMenu={this.toggleSidebarMenu.bind(this)}
                            sidebarState={this.state.sidebarState}
                            handleSidebarSize={this.handleSidebarSize.bind(this)}
                            handleLayout={this.handleLayout.bind(this)}
                         />
-
+               
                         <main>{this.props.children}</main>
                         <Footer />
                      </div>
