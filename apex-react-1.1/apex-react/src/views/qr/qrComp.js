@@ -17,6 +17,7 @@ class QRComp extends Component{
         <div style = {box_center}>
           <p><b><font color="#F29258">URL: {this.props.data&&this.props.data.c_data}</font></b></p>
           <p>Created: {this.props.data&&this.props.data.d_create}</p>
+          <p>Short Link: https://yourqr.today/api/v1/qr.show/{this.props.data&&this.props.data.c_code}</p>
          
         </div>
 
@@ -41,7 +42,7 @@ class QRComp extends Component{
           </div>
           
           <div style ={{margin:'auto'}}>
-          <a href={"https://yourqr.today/api/v1/qr.show/"+this.props.data.c_code} download  >
+          <a href={"https://yourqr.today/api/v1/qr.show/"+this.props.data.c_code} download="YourQR.png"  >
           <Button outline color="warning" block >
           
           <div style ={{color:'black',display:'flex'}}>

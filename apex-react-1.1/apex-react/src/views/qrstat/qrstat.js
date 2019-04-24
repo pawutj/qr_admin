@@ -58,7 +58,8 @@ class QRStatis extends Component{
       c_4_2:1,
       c_4_3:0,
       c_3:'0 Location',
-      c_3_1:'0'
+      c_3_1:'0',
+      status:'สถิติการสแกน'
     };
   }
 
@@ -192,13 +193,19 @@ this.setState({c_5:data.c_data[0].c_5})
         const b = a.map((c)=>s_1[c]?s_1[c]:0)
         console.log(a)
         console.log(b)
-
+        const c = this.state.bottomValue=='7 Day'?
+                          (Array(7).fill()
+                          .map((e,i) => i)
+                          .map(x =>`rgba(255, 141, 96, ${1-(x/14)})`)):
+                          (Array(30).fill()
+                          .map((e,i) => i)
+                          .map(x =>`rgba(255, 141, 96, ${1-(x/42)})`))
         const data_temp = {
           labels:a.reverse(),
           datasets:[{
             label: "Total Scan",
             data: b.reverse() ,
-            backgroundColor: ["rgba(255, 141, 96, 1)"],
+            backgroundColor:c.reverse(),
             borderColor: "rgba(148,159,177,1)",
             pointBackgroundColor: "rgba(148,159,177,1)",
             pointBorderColor: "#fff",
@@ -386,7 +393,7 @@ this.setState({c_5:data.c_data[0].c_5})
       g4 :false,
       g5:false
     }),()=>this.f_1())
-
+    this.setState({status:'Total Scan'})
 
 
     }
@@ -399,8 +406,9 @@ this.setState({c_5:data.c_data[0].c_5})
       g4:false,
       g5:false
       }
-    ),()=>this.f_2()
-  )}
+    ),()=>this.f_2())
+    this.setState({status:'Unique Users'})
+  }
 
   click_3 = () => {
     this.setState(state => ({g3:!state.g3,
@@ -409,7 +417,9 @@ this.setState({c_5:data.c_data[0].c_5})
     g4: false,
     g5: false
     }) , () => this.f_3()
-    )}
+    )
+    this.setState({status:'Location'})
+  }
 
   click_4 = () => {
     this.setState(state => ({g4:!state.g4,
@@ -420,6 +430,7 @@ this.setState({c_5:data.c_data[0].c_5})
 
 
   }),()=>this.f_4())
+  this.setState({status:'Browser & Platform & Devices '})
   }
 
   click_5 = () => {
@@ -429,6 +440,7 @@ this.setState({c_5:data.c_data[0].c_5})
     g4: false,
     g3: false
   }),()=>this.f_5())
+  this.setState({status:'Identified Users'})
   }
 
   setValueBottom_1 = (value) => {
@@ -466,7 +478,7 @@ this.setState({c_5:data.c_data[0].c_5})
       <div>
       <div style = {{marginTop:70,marginLeft:20}}> 
       <h1>Scan Statistics</h1>
-      <p>สถิติการสแกน</p>
+      <p>{this.state.status}</p>
       </div>
       <div style = {{marginLeft:20}}> 
       <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>

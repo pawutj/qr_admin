@@ -113,7 +113,7 @@ class QRCreate extends Component {
             {this.state.path &&
             <div >
             <div style = {{marginLeft:'auto',marginRight:'auto'}}>
-            <a href={"https://yourqr.today/api/v1/qr.show/"+this.state.path} download  >
+            <a href={"https://yourqr.today/api/v1/qr.show/"+this.state.path} download="YourQR.png"  >
             <Button type="button" color="warning" block >   
              Download 
             </Button>
