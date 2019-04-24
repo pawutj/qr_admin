@@ -183,6 +183,7 @@ this.setState({c_5:data.c_data[0].c_5})
                                         return d_temp
                                         })
                           .map( e => e.getFullYear() +'-'+this.pad((e.getMonth()+1))+'-'+this.pad(e.getDate()) )
+                                        
         const s_1 = {}
         for (let i=0;i<data_set.length;i++){
           s_1[data_label[i]]=data_set[i]
@@ -193,11 +194,11 @@ this.setState({c_5:data.c_data[0].c_5})
         console.log(b)
 
         const data_temp = {
-          labels:a,
+          labels:a.reverse(),
           datasets:[{
             label: "Total Scan",
-            data: b ,
-            backgroundColor: "rgba(255, 141, 96, 0.8)",
+            data: b.reverse() ,
+            backgroundColor: ["rgba(255, 141, 96, 1)"],
             borderColor: "rgba(148,159,177,1)",
             pointBackgroundColor: "rgba(148,159,177,1)",
             pointBorderColor: "#fff",
