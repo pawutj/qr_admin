@@ -1,5 +1,6 @@
 import React,{Component} from "react"
 import { Bar } from "react-chartjs-2";
+import '../../app/app.css';
 import {
    BarData,
 } from "./chartData";

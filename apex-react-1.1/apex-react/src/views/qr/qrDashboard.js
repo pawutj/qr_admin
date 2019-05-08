@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-
+import '../../app/app.css';
 import QRComp from "./qrComp.js"
 
 import {  Button } from "reactstrap";
@@ -11,7 +11,8 @@ class QRDashboard extends Component {
     super(props)
     this.state = {
       qr_list :[],
-      popoverOpen: false
+      popoverOpen: false,
+      startqr:false
     }
   }
 
@@ -27,7 +28,7 @@ class QRDashboard extends Component {
                      this.setState({qr_list:data.c_data})
                      console.log(this.state.qr_list)
                      if(data.c_data.length == 0)
-                     this.setState({popoverOpen:false})
+                     this.setState({popoverOpen:false,startqr:true})
                    }
                   )
                 }
@@ -43,9 +44,9 @@ class QRDashboard extends Component {
       return (
          <Fragment>
            <div style ={{marginTop:70,marginLeft:20}}>
-          <h1>QR Code Dashboard</h1>
+          <h1>QR Code Analytics</h1>
           <p>รายงานแสดงผลสถิติการสแกน QR Code ที่สร้างทั้งหมด</p>
-          
+
           </div>
 
 
@@ -54,7 +55,9 @@ class QRDashboard extends Component {
           <Button color="warning" id = "Popover1">Create QR Code</Button>
           </Link>
           </div>
-
+          <div style = {{marginLeft:25}}>
+          {this.state.startqr&&<p><font color = "#F29258">เริ่มต้นสร้าง QR Code ที่วัดผลได้</font></p>}
+          </div>
           <Popover
               
                isOpen={this.state.popoverOpen}

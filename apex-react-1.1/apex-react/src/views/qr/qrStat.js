@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Row, Col } from "reactstrap";
-
+import '../../app/app.css';
 import * as Icon from "react-feather";
 
 import { StaticCardData } from "../cards/staticCardData";

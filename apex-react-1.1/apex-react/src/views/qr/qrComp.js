@@ -2,7 +2,7 @@ import React,{Component} from "react"
 import { Button } from "reactstrap";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import * as Icon from "react-feather";
-
+import '../../app/app.css';
 class QRComp extends Component{
 
   render(){
@@ -17,7 +17,7 @@ class QRComp extends Component{
         <div style = {box_center}>
           <p><b><font color="#F29258">URL: {this.props.data&&this.props.data.c_data}</font></b></p>
           <p>Created: {this.props.data&&this.props.data.d_create}</p>
-          <p>Short Link: https://yourqr.today/api/v1/qr.show/{this.props.data&&this.props.data.c_code}</p>
+          <p>QR URL: https://yourqr.today/api/v1/qr.go/{this.props.data&&this.props.data.c_code}</p>
          
         </div>
 

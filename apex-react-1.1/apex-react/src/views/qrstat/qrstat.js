@@ -6,7 +6,7 @@ import QRStatComp_2 from "./qrstatcomp_2.js"
 import QRStatComp_3 from "./qrstatcomp_3.js"
 import QRStatComp_4 from "./qrstatcomp_4.js"
 import QRStatComp_5 from "./qrstatcomp_5.js"
-
+import '../../app/app.css';
 import { Redirect  } from "react-router-dom";
 import {
 
@@ -495,14 +495,16 @@ this.setState({c_5:data.c_data[0].c_5})
           <div style ={{display:'flex',width:"18%",flexDirection:'column' , marginLeft:'auto',marginRight:'auto'}}
             onClick = {this.click_1}
           >
+          
             <MinimalStatisticsBG
-               cardBgColor="gradient-blackberry"
+               cardBgColor= {this.state.g1?"gradient-orange-amber":"gradient-blackberry"}
                statistics={this.state.c_1}
                text="Total Scan"
                iconSide="right"
-            >
-             <Icon.BarChart size={56} strokeWidth="1.3" color="#fff" />  
+            ><Icon.BarChart size={56} strokeWidth="1.3" color="#fff" />  
             </MinimalStatisticsBG>
+             
+           
           </div>
           
 
@@ -510,20 +512,23 @@ this.setState({c_5:data.c_data[0].c_5})
           onClick = {this.click_2}
           >
             <MinimalStatisticsBG
-               cardBgColor="gradient-blackberry"
+               cardBgColor={this.state.g2?"gradient-orange-amber":"gradient-blackberry"}
                statistics={this.state.c_2}
                text="Unique Users"
                iconSide="right"
             >
                <Icon.UserX size={56} strokeWidth="1.3" color="#fff" />  
             </MinimalStatisticsBG>
+
+
+            
             </div>
 
             <div style ={{display:'flex',width:"18%",flexDirection:'column' , marginLeft:'auto',marginRight:'auto'}}
             onClick = {this.click_3}
             >
               <MinimalStatisticsBG
-                 cardBgColor="gradient-blackberry"
+                 cardBgColor={this.state.g3?"gradient-orange-amber":"gradient-blackberry"}
                  statistics={this.state.c_3_1+' %'}
                  text={this.state.c_3}
                  iconSide="right"
@@ -536,7 +541,7 @@ this.setState({c_5:data.c_data[0].c_5})
               onClick = {this.click_4}
               >
                 <MinimalStatisticsBG
-                   cardBgColor="gradient-blackberry"
+                   cardBgColor={this.state.g4?"gradient-orange-amber":"gradient-blackberry"}
                    statistics={this.state.c_4_3+ ' %'}
                    text={this.state.c_4}
                    iconSide="right"
@@ -549,7 +554,7 @@ this.setState({c_5:data.c_data[0].c_5})
                 onClick = {this.click_5}
                 >
                   <MinimalStatisticsBG
-                     cardBgColor="gradient-blackberry"
+                     cardBgColor={this.state.g5?"gradient-orange-amber":"gradient-blackberry"}
                      statistics={this.state.c_5}
                      text="Identified Users"
                      iconSide="right"

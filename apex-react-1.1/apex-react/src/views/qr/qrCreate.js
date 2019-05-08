@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import '../../app/app.css';
 import {
    Row,
    Col,
@@ -68,16 +69,17 @@ class QRCreate extends Component {
       return (
         <div>
           <div style = {{marginTop:70,marginLeft:20}}> 
-          <h1>QR Code</h1>
-          <p>สามารถ สร้าง โปรโมทWebsite,เชื่อมระบบแอดเพื่อน Line ,แชร์ Videos,เอกสารDownload,รับไลค์บนFacebook พร้อมติดตามวัดผล</p>
+          <h1>Create QR Code</h1>
+          <p>คุณก็เป็นเจ้าของ QR Code ที่วัดผลได้ ที่เอาไปใช้ได้กับการโปรโมทเว็บไซต์, โปรโมทเพจ,
+ชวนทำแบบสอบถาม, หรือประชาสัมพันธ์ทั่วไป แต่พิเศษที่คุณเช็คยอดการสแกนได้ด้วย</p>
          
 
-          <h5><b><font color="#F29258">เริ่มสร้าง QR Code ของคุณ</font></b></h5>
+          <h5><b><font color="#F29258">เริ่มสร้าง QR Code ที่วัดผลได้ของคุณ ได้เลย!</font></b></h5>
          
           </div>
           <div style ={{display:'flex' ,height:'50vh' ,marginTop:30 }}>
             <div style ={{backgroundColor:'white',width:'30%',height:'100%',marginLeft:'auto',marginRight:'auto',padding:20}}>
-            <h5><b>ตั้งค่าลิงค์ไปยังเว็ปไซต์ของคุณ</b></h5>
+            <h5><b>Input your destination link</b></h5>
             <div style = {{marginTop:40}}>
             <p>{this.state.texterror}</p>
             <h5><b>URL: <font color="#F29258">*</font></b></h5>
@@ -88,7 +90,7 @@ class QRCreate extends Component {
              className="form-control"
              value = {this.state.url}
              onChange = {this.urlChange}
-             placeholder="URL"
+             placeholder="https://"
              required
           />
           </div>
@@ -126,9 +128,12 @@ class QRCreate extends Component {
             
           </div>
             <div style = {{marginTop:30,marginLeft:20}}>
-          <p><font color="#F29258">ข้อกำหนดในการใส่ข้อความ * Text บน QR Code</font></p>
-          <p>กรณีพิมพ์ข้อความเป็นภาษาอังกฤษ จะพิมพ์ได้ 20 ตัวอักษร คิดเป็น 1 ข้อความ</p>
-          <p>กรณีพิมพ์ข้อความเป็นภาษาไทยหรือไทยปนอังกฤษ จะพิมพ์ได้ 20 ตัวอักษร คิดเป็น 1 ข้อความ</p>
+          <p><font color="#F29258">คำแนะนำการสร้าง QR Code</font></p>
+          <p>1. URL เป็นลิงค์ของเว็บไซต์ปลายทางที่ต้องการสร้าง QR Code
+เช่น เว็บไซต์ร้านค้าหรือบริษัท http://www.9net.co.th, Line@ ใช้ https://line.me/ , แบบสอบถาม ใช้ https://docs.google.com/forms , โปรโมทแอปบน Play Store ใช้ https://play.google.com/store/apps/details?id=</p>
+          <p>2. Text ใช้เพื่อใส่ “ข้อความ” ลงไปบน QR Code เพื่อสร้างความแตกต่าง และจดจำได้ง่าย 
+ซึ่งต้องป้อนไม่เกิน 20 ตัวอักษรเท่านั้น
+</p>
           </div>
         </div>
 

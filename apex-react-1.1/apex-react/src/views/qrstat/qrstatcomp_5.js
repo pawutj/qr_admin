@@ -1,6 +1,6 @@
 import React,{Component} from "react"
 import { Table } from 'reactstrap';
-
+import '../../app/app.css';
 
 class QRstatComp_5 extends Component {
 
