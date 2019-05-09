@@ -56,7 +56,8 @@ class QRDashboard extends Component {
           </Link>
           </div>
           <div style = {{marginLeft:25}}>
-          {this.state.startqr&&<p><font color = "#F29258">เริ่มต้นสร้าง QR Code ที่วัดผลได้</font></p>}
+          {this.state.startqr&&<p><font className = "flash">เริ่มต้นสร้าง QR Code ที่วัดผลได้</font></p>}
+          {this.state.startqr&&<p><font className = "flash">คลิ๊ก ปุ่ม Create QR Code ได้เลย</font></p>}
           </div>
           <Popover
               

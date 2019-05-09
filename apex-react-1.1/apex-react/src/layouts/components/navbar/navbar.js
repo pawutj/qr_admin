@@ -67,17 +67,19 @@ class ThemeNavbar extends Component {
                      onClick={this.handleClick.bind(this)}
                      data-toggle="collapse"
                   />
-                  <Form className="navbar-form mt-1 float-left" role="search">
+                  {/* <Form className="navbar-form mt-1 float-left" role="search">
                      <NavbarSearch />
-                  </Form>
+                  </Form> */}
                   {/* <Moon size={20} color="#333" className="m-2 cursor-pointer"/> */}
-                  <MoreVertical
+                  
+                  {/* <MoreVertical
                      className="mt-1 navbar-toggler black no-border float-right"
                      size={50}
                      onClick={this.toggle}
-                  />
+                  /> */}
+               
                </div>
-
+         {/*
                <div className="navbar-container">
                   <Collapse isOpen={this.state.isOpen} navbar>
                      <Nav className="ml-auto float-right" navbar>
@@ -284,6 +286,7 @@ class ThemeNavbar extends Component {
                      </Nav>
                   </Collapse>
                </div>
+                                                         */}
             </div>
          </Navbar>
       );

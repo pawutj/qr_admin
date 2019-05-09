@@ -389,7 +389,15 @@ export const BarData = {
    options: {
       scaleShowVerticalLines: true,
       responsive: true,
-      maintainAspectRatio: false
+      maintainAspectRatio: false,
+      scales: {
+         yAxes: [{
+             ticks: {
+                 fixedStepSize: 1,
+                 beginAtZero: true
+             }
+         }],
+     },
    }
 };
 

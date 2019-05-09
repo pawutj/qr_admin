@@ -25,7 +25,7 @@ class QRstatComp_5 extends Component {
           <tr>
             <td>{d.c_fname}</td>
             <td>{d.c_lname}</td>
-            <td>0{d.c_phone_no}</td>
+            <td>{d.c_phone_no}</td>
             <td>{d.c_email}</td>
           </tr>
         )

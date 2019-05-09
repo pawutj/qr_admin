@@ -252,13 +252,19 @@ this.setState({c_5:data.c_data[0].c_5})
         const b = a.map((c)=>s_1[c]?s_1[c]:0)
         console.log(a)
         console.log(b)
-
+                const c = this.state.bottomValue=='7 Day'?
+                          (Array(7).fill()
+                          .map((e,i) => i)
+                          .map(x =>`rgba(255, 141, 96, ${1-(x/14)})`)):
+                          (Array(30).fill()
+                          .map((e,i) => i)
+                          .map(x =>`rgba(255, 141, 96, ${1-(x/42)})`))
         const data_temp = {
-          labels:a,
+          labels:a.reverse(),
           datasets:[{
             label: "Unique Users",
-            data: b ,
-            backgroundColor: "rgba(255, 141, 96, 0.8)",
+            data: b.reverse() ,
+            backgroundColor: c.reverse(),
             borderColor: "rgba(148,159,177,1)",
             pointBackgroundColor: "rgba(148,159,177,1)",
             pointBorderColor: "#fff",

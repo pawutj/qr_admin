@@ -16,8 +16,8 @@ class QRComp extends Component{
 
         <div style = {box_center}>
           <p><b><font color="#F29258">URL: {this.props.data&&this.props.data.c_data}</font></b></p>
-          <p>Created: {this.props.data&&this.props.data.d_create}</p>
-          <p>QR URL: https://yourqr.today/api/v1/qr.go/{this.props.data&&this.props.data.c_code}</p>
+          <p>Created:<font color = "#3c3e49"> {this.props.data&&this.props.data.d_create}</font></p>
+          <p>QR URL: :<font color = "#3c3e49"> https://yourqr.today/api/v1/qr.go/{this.props.data&&this.props.data.c_code}</font></p>
          
         </div>
 
@@ -48,7 +48,7 @@ class QRComp extends Component{
           <div style ={{color:'black',display:'flex'}}>
           <Icon.Download size={20} strokeWidth="1.3" color="#000" />
           
-          <div style= {{marginLeft:10}}>
+          <div style= {{marginLeft:10,color:"#3c3e49"}}>
             Download
           </div>
             </div>
