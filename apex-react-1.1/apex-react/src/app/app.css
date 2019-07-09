@@ -39,5 +39,59 @@ p{
  
  @keyframes flash {
      from {color:#F29258;}
-     to {color: #f8f9fa;}
+     to {color: #f1620c;}
  }
+
+ .phoneWideStat{
+    width:18%;
+    display:flex;
+    flex-direction:column;
+}
+@media  screen and (min-width:621px) {
+.boxRightest{
+
+    width:15%;
+
+}
+
+.createQRBox{
+    width:30%;
+    height:50vh;
+}
+}
+
+ @media  screen and (max-width:620px) {
+ 
+    
+.createQRBox{
+    width:90%;
+    height:55vh;
+}
+ 
+    .phoneColumn{
+   
+     flex-direction: column;
+ }
+ .phoneWideStat{
+    width:80%;
+}
+.box_1phone{
+    flex-direction:column;
+}
+.boxRightest{
+
+    width:95%;
+    margin-left:auto;
+    margin-right:auto;
+    padding-right:20px
+ 
+}
+
+.boxLeft{
+    margin-left: auto;
+    margin-right:auto;
+    display: block;
+}
+
+
+}

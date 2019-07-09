@@ -5,19 +5,21 @@ import * as Icon from "react-feather";
 import '../../app/app.css';
 class QRComp extends Component{
 
+  trim = s => s.length>40?`${s.substring(0,60)}...`:s
+
   render(){
     return(
       
 
-      <div style = {box_1}>
-        <div style = {box_left}>
+      <div style = {box_1} className="box_1phone">
+        <div className = "boxLeft" >
           <img src={"https://yourqr.today/api/v1/qr.show/"+this.props.data.c_code} width="170" alt="Card cap 01" className=""style ={pic} />
         </div>
 
         <div style = {box_center}>
-          <p><b><font color="#F29258">URL: {this.props.data&&this.props.data.c_data}</font></b></p>
+          <p><b><font color="#F29258">URL: {this.trim(this.props.data&&this.props.data.c_data)}</font></b></p>
           <p>Created:<font color = "#3c3e49"> {this.props.data&&this.props.data.d_create}</font></p>
-          <p>QR URL: :<font color = "#3c3e49"> https://yourqr.today/api/v1/qr.go/{this.props.data&&this.props.data.c_code}</font></p>
+          <p>QR URL: :<font color = "#3c3e49"> https://yourqr.today/api/v1/qr.go/{this.props.data&&this.trim(this.props.data.c_code)}</font></p>
          
         </div>
 
@@ -26,7 +28,7 @@ class QRComp extends Component{
 
         </div>
 
-        <div style = {box_rightest}>
+        <div style = {box_rightest} className = "boxRightest">
           <div style ={{margin:'auto'}}>
           <Link to ={{pathname:'/qrstat',state:{qr_id:this.props.data.qr_id} }}>
           <Button outline color="warning" block>
@@ -94,7 +96,7 @@ const box_1 ={
   background:'#F5F7FA',
   margin:5,
   display:'flex',
-  flexDirection:'row'
+ 
 }
 
 const box_left = {
@@ -113,7 +115,7 @@ const box_right = {
 
 const box_rightest = {
   backgroundColor:'#F5F7FA',
-  width:'15%',
+
     alignItems: 'center',
     justifyContent :'center',
 

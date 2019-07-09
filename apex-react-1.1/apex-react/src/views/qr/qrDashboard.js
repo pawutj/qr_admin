@@ -68,7 +68,8 @@ class QRDashboard extends Component {
             >
               
                <PopoverBody>
-                  กดตรงนี้เพื่อสร้าง QR Code แรกของคุณ
+                  
+                  
                </PopoverBody>
             </Popover>
            

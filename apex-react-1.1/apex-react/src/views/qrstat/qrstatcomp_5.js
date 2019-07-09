@@ -10,7 +10,9 @@ class QRstatComp_5 extends Component {
       return (
 
       <div>
-
+        <div style = {{color:"#F29258" , textAlign:"center" , marginTop:"3%", marginBottom:"3%"}}>
+        <h2>Coming soon</h2>
+        </div>
         <Table>
         <thead>
           <tr>

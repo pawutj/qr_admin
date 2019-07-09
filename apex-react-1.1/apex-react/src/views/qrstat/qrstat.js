@@ -6,6 +6,8 @@ import QRStatComp_2 from "./qrstatcomp_2.js"
 import QRStatComp_3 from "./qrstatcomp_3.js"
 import QRStatComp_4 from "./qrstatcomp_4.js"
 import QRStatComp_5 from "./qrstatcomp_5.js"
+import QRStatComp_1_table from "./qrstatcomp_1_table.js"
+import QRStatComp_3_table from "./qrstatcomp_3_table.js"
 import '../../app/app.css';
 import { Redirect  } from "react-router-dom";
 import {
@@ -41,10 +43,12 @@ class QRStatis extends Component{
       g3:false,
       g4:false,
       g5:false,
+      location_table:[],
       data_1:{},
       data_3:{},
       data_4:{},
       data_5:{},
+      data_scan_table:{},
       dropdownOpen: false,
       bottomValue:'7 Day',
       d_start:d_start,
@@ -73,12 +77,12 @@ class QRStatis extends Component{
   summary_1(){
     let fetch_string = 'https://yourqr.today/api/v1/report.summary?qr_id='
     +this.props.location.state.qr_id
-console.log(fetch_string)
+
 fetch(fetch_string)
 .then((response) => response.json())
 .then(data => {
 if(0 in data.c_data){
-console.log(data.c_data[0])
+
 this.setState({c_1:data.c_data[0].c_1})
 this.setState({c_2:data.c_data[0].c_2})
 this.setState({c_4:data.c_data[0].c_4})
@@ -99,49 +103,15 @@ this.setState({c_5:data.c_data[0].c_5})
 
   summary_2(){
     let fetch_string = 'https://yourqr.today/api/v1/report.stat_3?d_seen_start="'
-            +this.state.d_start
-            +'"&d_seen_end="'
-            +this.state.d_end
-            +'"&c_type=scan&qr_id='
-            +this.props.location.state.qr_id
-    console.log(fetch_string)
+    +this.state.d_start
+    +'"&d_seen_end="'
+    +this.state.d_end
+    +'"&c_type=scan&qr_id='
+    +this.props.location.state.qr_id
+
     fetch(fetch_string)
       .then((response) => response.json())
-      .then(data => {
-        const data_t  = data.c_data.map(c => c.c)
-                                   .map(c => c.split(',')[3])
-                                   .map(c => c.replace(/[0-9]/g,''))
-                                   .reduce( (acc,curr) => {
-                                                if (typeof acc[curr] == 'undefined') {
-                                                  acc[curr] = 1
-                                                } else {
-                                                  acc[curr] += 1
-                                              }
-                                              return acc
-                                            },{})
-        let data_key =[]
-        let data_value = []                                   
-        for (var x in data_t){
-            data_key.push(x) 
-            data_value.push(data_t[x])   
-        }
-        let max = 0
-        let sum=0
-        let index=0
-        for( var i =0;i<data_value.length;i++){
-          if(data_value[i]>max){
-            max = data_value[i]
-            index = i
-          }
-          sum = sum+data_value[i]
-        }
-        if(sum>0){
-          let k = this.trim(data_key[index])
-          this.setState({c_3:k})
-          let t = (max/sum*100).toFixed(0)
-          this.setState({c_3_1:t})
-        } 
-      })
+      .then(data => {this.setState(state => ({c_3_1:data.c_data.length}))})
       
   }
 
@@ -161,6 +131,24 @@ this.setState({c_5:data.c_data[0].c_5})
     return (d < 10) ? '0' + d.toString() : d.toString();
   }
 
+
+  f_0 =() => {
+    let fetch_string = 'https://yourqr.today/api/v1/report.scan_table?d_seen_start="'
+    +this.state.d_start
+    +'"&d_seen_end="'
+    +this.state.d_end
+    +'"&c_type=scan&qr_id='
+    +this.props.location.state.qr_id
+    console.log(fetch_string)
+    fetch(fetch_string)
+      .then((response) => response.json())
+      .then(data => {
+        console.log(data.c_data)
+        this.setState(state => ({data_scan_table:data.c_data}))
+      })
+
+  }
+
   f_1 = () =>{
     let fetch_string = 'https://yourqr.today/api/v1/report.stat?d_seen_start="'
             +this.state.d_start
@@ -168,15 +156,15 @@ this.setState({c_5:data.c_data[0].c_5})
             +this.state.d_end
             +'"&c_type=scan&qr_id='
             +this.props.location.state.qr_id
-    console.log(fetch_string)
+    // console.log(fetch_string)
     fetch(fetch_string)
       .then((response) => response.json())
       .then(data => {
-        console.log(data.c_data)
+        // console.log(data.c_data)
         const data_set = data.c_data.map((d) => d.c)
         const data_label = data.c_data.map((d) => d.d)
-        console.log(data_set)
-        console.log(data_label)
+        // console.log(data_set)
+        // console.log(data_label)
         const a = Array(this.state.bottomValue=='7 Day'?7:30).fill()
                           .map((e,i)=>i)
                           .map( d => {let d_temp = new Date()
@@ -191,8 +179,8 @@ this.setState({c_5:data.c_data[0].c_5})
 
         }
         const b = a.map((c)=>s_1[c]?s_1[c]:0)
-        console.log(a)
-        console.log(b)
+        // console.log(a)
+        // console.log(b)
         const c = this.state.bottomValue=='7 Day'?
                           (Array(7).fill()
                           .map((e,i) => i)
@@ -216,7 +204,7 @@ this.setState({c_5:data.c_data[0].c_5})
         }
 
         this.setState(state => ({data_1:data_temp}))
-        console.log(this.state.data_1)
+        // console.log(this.state.data_1)
         }
       )
   }
@@ -232,11 +220,11 @@ this.setState({c_5:data.c_data[0].c_5})
     fetch(fetch_string)
       .then((response) => response.json())
       .then(data => {
-        console.log(data.c_data)
+        // console.log(data.c_data)
         const data_set = data.c_data.map((d) => d.c)
         const data_label = data.c_data.map((d) => d.d)
-        console.log(data_set)
-        console.log(data_label)
+        // console.log(data_set)
+        // console.log(data_label)
         const a = Array(this.state.bottomValue=='7 Day'?7:30).fill()
                           .map((e,i)=>i)
                           .map( d => {let d_temp = new Date()
@@ -250,8 +238,8 @@ this.setState({c_5:data.c_data[0].c_5})
 
         }
         const b = a.map((c)=>s_1[c]?s_1[c]:0)
-        console.log(a)
-        console.log(b)
+        // console.log(a)
+        // console.log(b)
                 const c = this.state.bottomValue=='7 Day'?
                           (Array(7).fill()
                           .map((e,i) => i)
@@ -304,46 +292,28 @@ this.setState({c_5:data.c_data[0].c_5})
             +this.state.d_end
             +'"&c_type=scan&qr_id='
             +this.props.location.state.qr_id
+            this.setState(state => ({location_table : []}))
     console.log(fetch_string)
     fetch(fetch_string)
       .then((response) => response.json())
-      .then(data => {
-        const data_t  = data.c_data.map(c => c.c)
-                                   .map(c => c.split(',')[3])
-                                   .map(c => c.replace(/[0-9]/g,''))
-                                   .reduce( (acc,curr) => {
-                                                if (typeof acc[curr] == 'undefined') {
-                                                  acc[curr] = 1
-                                                } else {
-                                                  acc[curr] += 1
-                                              }
-                                              return acc
-                                            },{})
-        let data_key =[]
-        let data_value = []                                   
-        for (var x in data_t){
-            data_key.push(x) 
-            data_value.push(data_t[x])   
-        }
-        console.log(data_key)
-        console.log(data_value)
-        const data_temp = {
-          labels: data_key,
-          datasets: [
-             {
-                data: data_value,
-                backgroundColor: [
-                   "rgba(0, 157, 160, 0.8)",
-                   "rgba(28, 188, 216, 0.8)",
-                   "rgba(255, 141, 96, 0.8)"
-                ]
-             }
-          ]
-       }
-       return data_temp
-  }).then(data_temp => {
-    this.setState(state => ({data_3:data_temp}))
-  })
+      .then(data => data.c_data)
+      .then(data => data.map(t => ({...t,c:(JSON.parse(t.c).coords) })))
+      .then(data => data.map( t =>{
+        let state = ''
+        let suburb  =''        
+        console.log(t.c.latitude , t.c.longitude)
+        const s = `https://eu1.locationiq.com/v1/reverse.php?key=1fda8199f89beb&lat=${t.c.latitude}&lon=${t.c.longitude}&format=json`
+        fetch(s)
+          .then((response) => response.json())
+          .then(data => {console.log(data)
+                        state = data.address.state
+                        suburb = data.address.suburb
+                        const c  = {state:state,suburb:suburb,time:t.t,date:t.d}
+                        this.setState(state => ({location_table : [...state.location_table,c]}))
+                        console.log(this.state.location_table)
+          })
+      }))
+
   
 }
 
@@ -363,11 +333,11 @@ this.setState({c_5:data.c_data[0].c_5})
     fetch(fetch_string)
       .then((response) => response.json())
       .then(data => {
-        console.log(data.c_data)
+        // console.log(data.c_data)
         const data_set = data.c_data.map((d) => d.c)
         const data_label = data.c_data.map((d) => d.d)
-        console.log(data_set)
-        console.log(data_label)
+        // console.log(data_set)
+        // console.log(data_label)
         const data_temp = {
              labels: data_label,
              datasets: [
@@ -398,7 +368,9 @@ this.setState({c_5:data.c_data[0].c_5})
       g3 : false,
       g4 :false,
       g5:false
-    }),()=>this.f_1())
+    }),()=>{this.f_1()
+          this.f_0()        
+    })
     this.setState({status:'Total Scan'})
 
 
@@ -422,7 +394,7 @@ this.setState({c_5:data.c_data[0].c_5})
     g2 : false,
     g4: false,
     g5: false
-    }) , () => this.f_3()
+    }) , () => { if(this.state.g3==true){this.f_3()}}
     )
     this.setState({status:'Location'})
   }
@@ -497,9 +469,9 @@ this.setState({c_5:data.c_data[0].c_5})
         </Dropdown>
         </div>
         <div style ={{marginLeft:20}}>
-      <div style = {containner} >
-          <div style ={{display:'flex',width:"18%",flexDirection:'column' , marginLeft:'auto',marginRight:'auto'}}
-            onClick = {this.click_1}
+      <div style = {containner} className ="phoneColumn" >
+          <div style ={{display:'flex',flexDirection:'column' , marginLeft:'auto',marginRight:'auto'}}
+            onClick = {this.click_1} className  = "phoneWideStat"
           >
           
             <MinimalStatisticsBG
@@ -513,9 +485,9 @@ this.setState({c_5:data.c_data[0].c_5})
            
           </div>
           
-
-          <div style ={{display:'flex',width:"18%",flexDirection:'column' , marginLeft:'auto',marginRight:'auto'}}
-          onClick = {this.click_2}
+     
+          <div style ={{display:'flex',flexDirection:'column' , marginLeft:'auto',marginRight:'auto'}}
+          onClick = {this.click_2} className  = "phoneWideStat"
           >
             <MinimalStatisticsBG
                cardBgColor={this.state.g2?"gradient-orange-amber":"gradient-blackberry"}
@@ -530,21 +502,22 @@ this.setState({c_5:data.c_data[0].c_5})
             
             </div>
 
-            <div style ={{display:'flex',width:"18%",flexDirection:'column' , marginLeft:'auto',marginRight:'auto'}}
-            onClick = {this.click_3}
+            <div style ={{display:'flex',flexDirection:'column' , marginLeft:'auto',marginRight:'auto'}}
+            onClick = {this.click_3} className  = "phoneWideStat"
             >
               <MinimalStatisticsBG
                  cardBgColor={this.state.g3?"gradient-orange-amber":"gradient-blackberry"}
-                 statistics={this.state.c_3_1+' %'}
-                 text={this.state.c_3}
+                 statistics={this.state.c_3_1}
+                 text = 'Location'
+                
                  iconSide="right"
               >
                  <Icon.MapPin size={56} strokeWidth="1.3" color="#fff" />  
               </MinimalStatisticsBG>
               </div>
 
-              <div style ={{display:'flex',width:"18%",flexDirection:'column' , marginLeft:'auto',marginRight:'auto'}}
-              onClick = {this.click_4}
+              <div style ={{display:'flex',flexDirection:'column' , marginLeft:'auto',marginRight:'auto'}}
+              onClick = {this.click_4} className  = "phoneWideStat"
               >
                 <MinimalStatisticsBG
                    cardBgColor={this.state.g4?"gradient-orange-amber":"gradient-blackberry"}
@@ -556,8 +529,8 @@ this.setState({c_5:data.c_data[0].c_5})
                 </MinimalStatisticsBG>
                 </div>
 
-                <div style ={{display:'flex',width:"18%",flexDirection:'column' , marginLeft:'auto',marginRight:'auto'}}
-                onClick = {this.click_5}
+                <div style ={{display:'flex',flexDirection:'column' , marginLeft:'auto',marginRight:'auto'}}
+                onClick = {this.click_5} className  = "phoneWideStat"
                 >
                   <MinimalStatisticsBG
                      cardBgColor={this.state.g5?"gradient-orange-amber":"gradient-blackberry"}
@@ -568,15 +541,16 @@ this.setState({c_5:data.c_data[0].c_5})
                      <Icon.Users size={56} strokeWidth="1.3" color="#fff" />  
                   </MinimalStatisticsBG>
                   </div>
-
+                  
 
       </div>
       </div>
       <div>
 
         {this.state.g1 && <QRStatComp_1 data = {this.state.data_1}/>}
+        {this.state.g1 && <QRStatComp_1_table data = {this.state.data_scan_table}/>}
         {this.state.g2 && <QRStatComp_2 data ={this.state.data_2}/>}
-        {this.state.g3 && <QRStatComp_3 data ={this.state.data_3}/>}
+        {this.state.g3 && <QRStatComp_3_table data ={this.state.location_table}/>}
 
         {this.state.g4 &&
           <div>
@@ -636,7 +610,7 @@ this.setState({c_5:data.c_data[0].c_5})
 
 const containner ={
   display:'flex',
-  flexDirection:'row',
+
 
 }
 

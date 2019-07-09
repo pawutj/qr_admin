@@ -149,7 +149,7 @@ class Register extends Component {
                                     className="form-control"
                                     value ={this.state.passwd}
                                     onChange = {this.passwdChange}
-                                    placeholder="passwd"
+                                    placeholder="Password"
                                     required
                                  />
                               </Col>

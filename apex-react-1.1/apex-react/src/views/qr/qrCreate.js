@@ -77,8 +77,8 @@ class QRCreate extends Component {
           <h5><b><font color="#F29258">เริ่มสร้าง QR Code ที่วัดผลได้ของคุณ ได้เลย!</font></b></h5>
          
           </div>
-          <div style ={{display:'flex' ,height:'50vh' ,marginTop:30 }}>
-            <div style ={{backgroundColor:'white',width:'30%',height:'100%',marginLeft:'auto',marginRight:'auto',padding:20}}>
+          <div style ={{display:'flex' ,marginTop:30 }} className = "phoneColumn">
+            <div style ={{backgroundColor:'white',marginLeft:'auto',marginRight:'auto',padding:20,marginTop:10}} className = "createQRBox">
             <h5><b>Input your destination link</b></h5>
             <div style = {{marginTop:40}}>
             <p>{this.state.texterror}</p>
@@ -110,7 +110,8 @@ class QRCreate extends Component {
              Submit
           </Button>
             </div>
-            <div style ={{backgroundColor:'white',width:'30%',height:'100%',marginLeft:'auto',marginRight:'auto',padding:20}}>
+            <div style ={{backgroundColor:'white',height:'50vh',marginLeft:'auto',marginRight:'auto',padding:20,marginTop:10}} className = "createQRBox">
+            
             {this.state.path && <img src={"https://yourqr.today/api/v1/qr.show/"+this.state.path} width="250" style = {{marginLeft:'auto',marginRight:'auto' ,display: 'block'}} />}
             {this.state.path &&
             <div >
@@ -127,7 +128,7 @@ class QRCreate extends Component {
             </div>
             
           </div>
-            <div style = {{marginTop:30,marginLeft:20}}>
+            <div style = {{marginTop:50,marginLeft:20}}>
           <p><font color="#F29258">คำแนะนำการสร้าง QR Code</font></p>
           <p>1. URL เป็นลิงค์ของเว็บไซต์ปลายทางที่ต้องการสร้าง QR Code
 เช่น เว็บไซต์ร้านค้าหรือบริษัท http://www.9net.co.th, Line@ ใช้ https://line.me/ , แบบสอบถาม ใช้ https://docs.google.com/forms , โปรโมทแอปบน Play Store ใช้ https://play.google.com/store/apps/details?id=</p>
