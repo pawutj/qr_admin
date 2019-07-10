@@ -306,11 +306,13 @@ this.setState({c_5:data.c_data[0].c_5})
         fetch(s)
           .then((response) => response.json())
           .then(data => {console.log(data)
+                        if(!data.error){
                         state = data.address.state
                         suburb = data.address.suburb
                         const c  = {state:state,suburb:suburb,time:t.t,date:t.d}
                         this.setState(state => ({location_table : [...state.location_table,c]}))
                         console.log(this.state.location_table)
+                        }
           })
       }))
 
@@ -404,11 +406,8 @@ this.setState({c_5:data.c_data[0].c_5})
     g1 : false,
     g2 : false,
     g3: false,
-    g5: false
-
-
-  }),()=>this.f_4())
-  this.setState({status:'Browser & Platform & Devices '})
+    g5: false }),()=>this.f_4())
+    this.setState({status:'Browser & Platform & Devices '})
   }
 
   click_5 = () => {

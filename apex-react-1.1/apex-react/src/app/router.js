@@ -9,6 +9,7 @@ import FullPageLayout from "../layouts/routes/fullpageRoutes";
 import ErrorLayoutRoute from "../layouts/routes/errorRoutes";
 
 // Main Layout
+const LazyPassword = lazy(() => import("../views/qr/password"));
 const LazyQRStat = lazy(() => import("../views/qrstat/qrstat"));
 const LazyQRDashboard = lazy(() => import("../views/qr/qrDashboard"));
 const LazyQRCreate = lazy(() => import("../views/qr/qrCreate"));
@@ -136,6 +137,17 @@ class Router extends Component {
                      </Suspense>
                   )}
                />
+
+               <MainLayoutRoutes
+                  exact
+                  path="/password"
+                  render={matchprops => (
+                     <Suspense fallback={<Spinner />}>
+                        <LazyPassword {...matchprops} />
+                     </Suspense>
+                  )}
+               />
+
                <MainLayoutRoutes
                   exact
                   path="/qr"
