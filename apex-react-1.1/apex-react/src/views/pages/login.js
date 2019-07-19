@@ -55,6 +55,7 @@ class Login extends Component {
                               if(data.success==true){
                                 localStorage.setItem('user_id', data.c_data.id)
                                 localStorage.setItem('uuid', data.c_uuid);
+                                localStorage.setItem('email', data.c_data.c_email);
                                 this.setState({redirect:true   })
                             }else {
                                 this.setState({c_data:data.c_data})

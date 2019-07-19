@@ -22,7 +22,8 @@ import {
    Users,
    LogOut,
    BarChart,
-   Cpu
+   Cpu,
+   User
 } from "react-feather";
 import { NavLink } from "react-router-dom";
 
@@ -53,6 +54,16 @@ class SideMenuContent extends Component {
                   <span className="menu-item-text">Create QR Code</span>
                </NavLink>
             </SideMenu.MenuSingleItem>
+
+            <SideMenu.MenuSingleItem badgeColor="danger">
+               <NavLink to="/password" activeclassname="active">
+                  <i className="menu-icon">
+                     <User size={18} />
+                  </i>
+                  <span className="menu-item-text">Account</span>
+               </NavLink>
+            </SideMenu.MenuSingleItem>
+
 
             <SideMenu.MenuSingleItem badgeColor="danger">
             <NavLink to="/pages/login" onClick ={() => {localStorage.setItem('user_id','null')
