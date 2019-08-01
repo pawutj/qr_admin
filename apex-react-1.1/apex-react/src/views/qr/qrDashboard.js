@@ -29,6 +29,7 @@ class QRDashboard extends Component {
                      console.log(this.state.qr_list)
                      if(data.c_data.length == 0)
                      this.setState({popoverOpen:false,startqr:true})
+                     console.log(data)
                    }
                   )
                 }

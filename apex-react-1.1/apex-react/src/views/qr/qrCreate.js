@@ -19,12 +19,25 @@ class QRCreate extends Component {
     text:'',
     redirect: false,
     path:'',
-    texterror:''
+    texterror:'',
+    edit:false,
+    name:''
   };
   urlChange = e =>{
     this.setState({url:e.target.value})
   }
 
+  nameChange = e =>{
+    this.setState({name:e.target.value})
+  }
+  componentDidMount(){
+    if(this.props.location.state){
+      console.log(this.props.location.state.url)
+      this.setState( () => ({edit:true}))
+      this.setState(()=>({url:this.props.location.state.url}))
+      this.setState(()=>({text:this.props.location.state.text}))
+    }
+  }
 
   textChange = e => {
     this.setState({text:e.target.value})
@@ -33,14 +46,16 @@ class QRCreate extends Component {
   postData =() => {
             if((`${this.state.text.length}`)<20){
             console.log("AA")
-            fetch('https://yourqr.today/api/v1/qr.save', {
+            const c = `https://yourqr.today/api/v1/qr.save${this.state.edit?`/${this.props.location.state.edit_value}`:``}`
+            fetch(c, {
                 method: 'POST',
                 headers : {
                   'uuid':localStorage.getItem('uuid')
                 },
                 body:JSON.stringify({c_data:this.state.url
                                     ,c_text:this.state.text
-                                    })
+                                    ,c_config:{name:this.state.name}  
+                                  })
             }).then((res) => res.json())
             .then((data) =>  {console.log(data)
                               if(data.success == true)                
@@ -68,14 +83,26 @@ class QRCreate extends Component {
       else
       return (
         <div>
+          {/* <p>{this.props.location.state.edit_value}</p>
+          <p>{this.props.location.state.url}</p>
+          <p>{this.props.location.state.text}</p> */}
           <div style = {{marginTop:70,marginLeft:20}}> 
+          {!this.state.edit&&
+          <div>
           <h1>Create QR Code</h1>
           <p>คุณก็เป็นเจ้าของ QR Code ที่วัดผลได้ ที่เอาไปใช้ได้กับการโปรโมทเว็บไซต์, โปรโมทเพจ,
 ชวนทำแบบสอบถาม, หรือประชาสัมพันธ์ทั่วไป แต่พิเศษที่คุณเช็คยอดการสแกนได้ด้วย</p>
          
 
           <h5><b><font color="#F29258">เริ่มสร้าง QR Code ที่วัดผลได้ของคุณ ได้เลย!</font></b></h5>
-         
+          </div>
+          }
+          {
+            this.state.edit&&
+            <div>
+              <h1>Edit QR Code</h1>
+            </div>
+          }
           </div>
           <div style ={{display:'flex' ,marginTop:30 }} className = "phoneColumn">
             <div style ={{backgroundColor:'white',marginLeft:'auto',marginRight:'auto',padding:20,marginTop:10}} className = "createQRBox">
@@ -94,6 +121,20 @@ class QRCreate extends Component {
              required
           />
           </div>
+
+          <div style ={{marginTop:20}}></div>
+            <h5><b>Name:</b></h5>
+            <div style = {{marginLeft:'auto',marginRight:'auto'}}>
+          <Input
+             type="text"
+             className="form-control"
+             value = {this.state.name}
+             onChange = {this.nameChange}
+             placeholder="Name"
+             
+          />
+            </div>
+
           <div style ={{marginTop:20}}></div>
             <h5><b>Text:</b></h5>
             <div style = {{marginLeft:'auto',marginRight:'auto'}}>
@@ -103,8 +144,12 @@ class QRCreate extends Component {
              value = {this.state.text}
              onChange = {this.textChange}
              placeholder="Text"
+             disabled={this.state.edit}
           />
             </div>
+
+
+
             <div style ={{marginTop:20}}></div>
           <Button type="button" color="warning" block  onClick = {this.postData} >
              Submit

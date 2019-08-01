@@ -17,10 +17,14 @@ class QRComp extends Component{
         </div>
 
         <div style = {box_center}>
+          <p><b>Name:<font color = "#3c3e49"> {this.props.data&&JSON.parse(this.props.data.c_config).name}</font></b></p>
           <p><b><font color="#F29258">URL: {this.trim(this.props.data&&this.props.data.c_data)}</font></b></p>
           <p>Created:<font color = "#3c3e49"> {this.props.data&&this.props.data.d_create}</font></p>
           <p>QR URL: :<font color = "#3c3e49"> https://yourqr.today/api/v1/qr.go/{this.props.data&&this.trim(this.props.data.c_code)}</font></p>
-         
+          <Link to ={{pathname:'/qrcreate',state:{edit_value:this.props.data.c_code , 
+                                                  url:this.props.data.c_data,
+                                                  text:this.props.data.c_text
+                                                  } }}><p><u>Edit</u></p></Link>
         </div>
 
         <div style = {box_right}>
