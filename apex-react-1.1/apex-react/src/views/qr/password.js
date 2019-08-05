@@ -58,7 +58,7 @@ class Password extends Component{
     render(){
         return (
             <div>
-            <div style = {{ height:'600px',width:'400px',marginTop:"70px",marginLeft:'20px'}}>
+            <div style = {{ height:'600px',width:'280px',marginTop:"70px",marginLeft:'20px',marginRight:'20px'}}>
             <h1>Profile</h1>
             <h2>{this.state.c_data}</h2>
             <Input  

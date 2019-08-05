@@ -105,7 +105,7 @@ class QRCreate extends Component {
           }
           </div>
           <div style ={{display:'flex' ,marginTop:30 }} className = "phoneColumn">
-            <div style ={{backgroundColor:'white',marginLeft:'auto',marginRight:'auto',padding:20,marginTop:10}} className = "createQRBox">
+            <div style ={{backgroundColor:'white',marginLeft:'auto',marginRight:'auto',padding:20,marginTop:10,height:450,width:350}} className = "createQRBox">
             <h5><b>Input your destination link</b></h5>
             <div style = {{marginTop:40}}>
             <p>{this.state.texterror}</p>
@@ -155,7 +155,7 @@ class QRCreate extends Component {
              Submit
           </Button>
             </div>
-            <div style ={{backgroundColor:'white',height:'50vh',marginLeft:'auto',marginRight:'auto',padding:20,marginTop:10}} className = "createQRBox">
+            <div style ={{backgroundColor:'white',height:450,marginLeft:'auto',marginRight:'auto',padding:20,marginTop:10, width:350}} className = "createQRBox">
             
             {this.state.path && <img src={"https://yourqr.today/api/v1/qr.show/"+this.state.path} width="250" style = {{marginLeft:'auto',marginRight:'auto' ,display: 'block'}} />}
             {this.state.path &&

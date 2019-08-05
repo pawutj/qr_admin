@@ -18,7 +18,7 @@ class MinimalStatisticsBG extends PureComponent {
       }
       return (
          <Card className={classnames(this.props.cardBgColor)}>
-            <CardBody className="px-3 py-3">
+            <CardBody className="px-2 py-3" >
                <Media>
                   {iconLeft}
                   <Media body className={classnames("white", textDirection)}>

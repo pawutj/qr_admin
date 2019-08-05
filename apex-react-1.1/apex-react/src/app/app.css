@@ -95,3 +95,9 @@ p{
 
 
 }
+
+ @media  screen and (max-width:1024px) and (min-width:700px) {
+.ipadhidden{
+    display: none;
+}
+} 

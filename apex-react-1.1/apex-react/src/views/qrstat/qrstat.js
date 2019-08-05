@@ -453,7 +453,7 @@ this.setState({c_5:data.c_data[0].c_5})
      else
     return(
       <div>
-      <div style = {{marginTop:70,marginLeft:20}}> 
+      <div style = {{marginTop:70,marginLeft:30}}> 
       <h1>Scan Statistics</h1>
       <p>{this.state.status}</p>
       </div>
@@ -467,9 +467,10 @@ this.setState({c_5:data.c_data[0].c_5})
            </DropdownMenu>
         </Dropdown>
         </div>
-        <div style ={{marginLeft:20}}>
+        <div style ={{marginLeft:-10}}>
       <div style = {containner} className ="phoneColumn" >
-          <div style ={{display:'flex',flexDirection:'column' , marginLeft:'auto',marginRight:'auto'}}
+          
+          <div style ={{display:'flex',flexDirection:'column' , marginLeft:' auto',marginRight:'auto'  }}
             onClick = {this.click_1} className  = "phoneWideStat"
           >
           
@@ -478,14 +479,15 @@ this.setState({c_5:data.c_data[0].c_5})
                statistics={this.state.c_1}
                text="Total Scan"
                iconSide="right"
-            ><Icon.BarChart size={56} strokeWidth="1.3" color="#fff" />  
+            
+            ><div className  ="ipadhidden"> <Icon.BarChart size={56} strokeWidth="1.3" color="#fff" /></div>  
             </MinimalStatisticsBG>
              
            
           </div>
           
      
-          <div style ={{display:'flex',flexDirection:'column' , marginLeft:'auto',marginRight:'auto'}}
+          <div style ={{display:'flex',flexDirection:'column' , marginLeft:'auto',marginRight:'auto' }}
           onClick = {this.click_2} className  = "phoneWideStat"
           >
             <MinimalStatisticsBG
@@ -494,7 +496,7 @@ this.setState({c_5:data.c_data[0].c_5})
                text="Unique Users"
                iconSide="right"
             >
-               <Icon.UserX size={56} strokeWidth="1.3" color="#fff" />  
+              <div className  ="ipadhidden"> <Icon.UserX size={56} strokeWidth="1.3" color="#fff" />  </div>
             </MinimalStatisticsBG>
 
 
@@ -511,7 +513,7 @@ this.setState({c_5:data.c_data[0].c_5})
                 
                  iconSide="right"
               >
-                 <Icon.MapPin size={56} strokeWidth="1.3" color="#fff" />  
+                 <div className  ="ipadhidden"> <Icon.MapPin size={56} strokeWidth="1.3" color="#fff" />  </div>
               </MinimalStatisticsBG>
               </div>
 
@@ -524,7 +526,7 @@ this.setState({c_5:data.c_data[0].c_5})
                    text={this.state.c_4}
                    iconSide="right"
                 >
-                   <Icon.Smartphone size={56} strokeWidth="1.3" color="#fff" />  
+                   <div className  ="ipadhidden"> <Icon.Smartphone size={56} strokeWidth="1.3" color="#fff" /> </div> 
                 </MinimalStatisticsBG>
                 </div>
 
@@ -534,10 +536,10 @@ this.setState({c_5:data.c_data[0].c_5})
                   <MinimalStatisticsBG
                      cardBgColor={this.state.g5?"gradient-orange-amber":"gradient-blackberry"}
                      statistics={this.state.c_5}
-                     text="Identified Users"
+                     text="Identified User"
                      iconSide="right"
                   >
-                     <Icon.Users size={56} strokeWidth="1.3" color="#fff" />  
+                    <div className  ="ipadhidden">  <Icon.Users size={56} strokeWidth="1.3" color="#fff" />  </div>
                   </MinimalStatisticsBG>
                   </div>
                   
@@ -609,7 +611,6 @@ this.setState({c_5:data.c_data[0].c_5})
 
 const containner ={
   display:'flex',
-
 
 }
 
